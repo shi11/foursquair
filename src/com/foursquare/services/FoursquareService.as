@@ -12,7 +12,7 @@ package com.foursquare.services
 	import com.foursquare.events.LoginEvent;
 	import com.foursquare.events.SearchEvent;
 	import com.foursquare.events.UserEvent;
-	import com.foursquare.models.LibraryModel;
+	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.models.vo.CheckinVO;
 	import com.foursquare.models.vo.UserVO;
 	import com.foursquare.models.vo.VenueVO;
@@ -41,7 +41,7 @@ package com.foursquare.services
 	{
 		
 		[Inject]
-		public var model:LibraryModel;
+		public var model:FoursquareModel;
 		
 		private var _url : String = "http://api.foursquare.com/v1/";
 		
@@ -279,7 +279,7 @@ package com.foursquare.services
 			
 			//dispatch event
 			var checkinEvent:CheckinEvent = new CheckinEvent(CheckinEvent.READ_RETURNED);
-			checkinEvent.checkins = new ArrayCollection( checkins );
+			checkinEvent.checkins = checkins;
 			dispatch( checkinEvent );
 		}
 		

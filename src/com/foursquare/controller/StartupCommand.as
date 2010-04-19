@@ -8,7 +8,7 @@ package com.foursquare.controller
 {
 	import com.foursquare.services.IFoursquareService;
 	import com.foursquare.events.LoginEvent;
-	import com.foursquare.models.LibraryModel;
+	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.util.XMLUtil;
 	
 	import flash.filesystem.File;
@@ -22,7 +22,7 @@ package com.foursquare.controller
 	{
 		
 		[Inject]
-		public var model:LibraryModel;
+		public var model:FoursquareModel;
 
 		[Inject]
 		public var foursquareService:IFoursquareService;

@@ -8,6 +8,7 @@ package com.foursquare.controller
 {
 	import com.foursquare.events.CheckinEvent;
 	import com.foursquare.models.Constants;
+	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.models.vo.CheckinVO;
 	import com.foursquare.services.IFoursquareService;
 	import com.foursquare.views.CheckinMediator;
@@ -31,6 +32,9 @@ package com.foursquare.controller
 		
 		[Inject]
 		public var checkinMediator:CheckinMediator;
+		
+		[Inject]
+		public var foursquareModel:FoursquareModel;
 
 		public function CheckinCommand()
 		{
@@ -73,7 +77,7 @@ package com.foursquare.controller
 			foursquareService.getCheckins();
 		}
 		
-		private function handleCheckins( checkins: ArrayCollection ):void{
+		private function handleCheckins( checkins: Array ):void{
 			
 			if( !checkinMediator.firstRead && mainViewMediator.showGrowl){
 				var newCheckins:ArrayCollection = findNewCheckins( checkins );
@@ -82,8 +86,8 @@ package com.foursquare.controller
 				}
 			}
 
-			checkinMediator.checkins = checkins;
-				
+			checkinMediator.handleResults();
+			foursquareModel.checkins.source = checkins;
 		}
 		
 		/**
@@ -93,7 +97,7 @@ package com.foursquare.controller
 		 * @return 
 		 * 
 		 */		
-		private function findNewCheckins(checkins:ArrayCollection):ArrayCollection{
+		private function findNewCheckins(checkins:Array):ArrayCollection{
 			
 			var timeFromLastPoll:Number = new Date().time - checkinMediator.pollInterval;
 			var newCheckins:ArrayCollection = new ArrayCollection();

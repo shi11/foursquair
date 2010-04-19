@@ -10,7 +10,7 @@ package com.foursquare.controller
 	import com.foursquare.events.LoginEvent;
 	import com.foursquare.events.NavigationEvent;
 	import com.foursquare.events.UserEvent;
-	import com.foursquare.models.LibraryModel;
+	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.models.Section;
 	import com.foursquare.util.XMLUtil;
 	
@@ -29,7 +29,7 @@ package com.foursquare.controller
 		public var foursquareService:IFoursquareService;
 		
 		[Inject]
-		public var model:LibraryModel;
+		public var model:FoursquareModel;
 		
 		public function LoginCommand()
 		{

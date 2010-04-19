@@ -7,7 +7,7 @@
 package com.foursquare.views
 {
 	import com.foursquare.events.UserEvent;
-	import com.foursquare.models.LibraryModel;
+	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.views.header.HeaderView;
 	
 	import org.robotlegs.mvcs.Mediator;
@@ -18,7 +18,7 @@ package com.foursquare.views
 		public var headerView:HeaderView;
 		
 		[Inject]
-		public var model:LibraryModel;
+		public var model:FoursquareModel;
 		
 		public function HeaderMediator()
 		{

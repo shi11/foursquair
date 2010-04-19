@@ -25,7 +25,6 @@ package com.foursquare.views.checkins
 	{
 		
 		private var _checkins:ArrayCollection;
-		private var checkinsChanged:Boolean;
 		
 		public function CheckinViewBase()
 		{
@@ -34,30 +33,26 @@ package com.foursquare.views.checkins
 			addEventListener( VenueEvent.GET_VENUE_DETAILS, getVenueDetails, true);
 		}
 		
-		override protected function commitProperties() : void{
-			super.commitProperties();
-			
-			if( checkinsChanged ){
-				checkinsChanged = true;
-				
-				var checkinItem:CheckinItem;
-				for (var i:int=0; i<numElements;i++){
-					checkinItem = getElementAt(i) as CheckinItem;
-					checkinItem.unload();
-				}
-				removeAllElements();
-				
-				for each(var checkin:CheckinVO in _checkins){
-					checkinItem = new CheckinItem();
-					checkinItem.checkinVO = checkin;
-					addElement( checkinItem );
-				}
-			}
-		}
-
 		public function getCheckins():void{
 			var checkinEvent:CheckinEvent = new CheckinEvent( CheckinEvent.READ );
 			dispatchEvent( checkinEvent );
+		}
+		
+		public function createView(value:ArrayCollection):void{
+			_checkins = value;
+			
+			var checkinItem:CheckinItem;
+			for (var i:int=0; i<numElements;i++){
+				checkinItem = getElementAt(i) as CheckinItem;
+				checkinItem.unload();
+			}
+			removeAllElements();
+			
+			for each(var checkin:CheckinVO in _checkins){
+				checkinItem = new CheckinItem();
+				checkinItem.checkinVO = checkin;
+				addElement( checkinItem );
+			}
 		}
 		
 		public function openUserDetails(userVO:UserVO):void{
@@ -79,18 +74,5 @@ package com.foursquare.views.checkins
 			dispatchEvent( event.clone() );
 		}
 		
-		[Bindable]
-		public function get checkins():ArrayCollection
-		{
-			return _checkins;
-		}
-
-		public function set checkins(value:ArrayCollection):void
-		{
-			_checkins = value;
-			checkinsChanged = true;
-			invalidateProperties();
-		}
-
 	}
 }

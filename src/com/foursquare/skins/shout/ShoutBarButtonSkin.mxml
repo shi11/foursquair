@@ -27,7 +27,8 @@
 		<s:BitmapImage source="@Embed('assets/icons/dimple-shoutbox.png')"
 				   top="7" horizontalCenter="0"/>
 		
-		<s:Label text="SHOUT" color="0xffffff" fontSize="14" top="7" left="25" />
+		<s:Label text="{resourceManager.getString('myResources', 'CHECKIN')}"
+				 color="0xffffff" fontSize="14" top="7" left="25" />
 	</s:Group>
 	
 </s:Skin>

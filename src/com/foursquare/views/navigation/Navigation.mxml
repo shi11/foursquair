@@ -57,7 +57,6 @@
 							 icon="@Embed('assets/icons/icon-search.png')" />
 			  </s:ArrayList>
 		  </s:dataProvider>
-
 	</s:ButtonBar>
 	
 </s:HGroup>

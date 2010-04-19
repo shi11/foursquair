@@ -7,7 +7,7 @@
 package com.foursquare.controller
 {
 	import com.foursquare.events.UserEvent;
-	import com.foursquare.models.LibraryModel;
+	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.services.IFoursquareService;
 	import com.foursquare.views.CheckinMediator;
 	
@@ -23,7 +23,7 @@ package com.foursquare.controller
 		public var foursquareService:IFoursquareService;
 		
 		[Inject]
-		public var libraryModel:LibraryModel;
+		public var foursquareModel:FoursquareModel;
 		
 		[Inject]
 		public var checkinMediator:CheckinMediator;

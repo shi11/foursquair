@@ -8,7 +8,7 @@ package com.foursquare.controller
 {
 	import com.foursquare.events.ErrorEvent;
 	import com.foursquare.events.SearchEvent;
-	import com.foursquare.models.LibraryModel;
+	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.models.vo.CityVO;
 	import com.foursquare.models.vo.UserVO;
 	import com.foursquare.services.IFoursquareService;
@@ -32,7 +32,7 @@ package com.foursquare.controller
 		public var maxmindService:IGeoService;
 		
 		[Inject]
-		public var libraryModel:LibraryModel;
+		public var foursquareModel:FoursquareModel;
 		
 		[Inject]
 		public var searchMediator:SearchMediator;
@@ -71,7 +71,7 @@ package com.foursquare.controller
 		 * 
 		 */		
 		private function query(keywords:String=null):void{
-			var currentUser:UserVO = libraryModel.currentUser;
+			var currentUser:UserVO = foursquareModel.currentUser;
 			foursquareService.getVenues(	currentUser.city.geolat, 
 											currentUser.city.geolong,
 										 	25, 10, keywords );
@@ -90,7 +90,7 @@ package com.foursquare.controller
 			cityVO.name = xml.geoip_city.@value + ", " + xml.geoip_region.@value;
 
 			//set to currentUser
-			var currentUser:UserVO = libraryModel.currentUser;
+			var currentUser:UserVO = foursquareModel.currentUser;
 			currentUser.city = cityVO;
 			
 			//set mediator

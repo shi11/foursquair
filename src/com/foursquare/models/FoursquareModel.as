@@ -10,10 +10,12 @@ package com.foursquare.models
 	
 	import flash.filesystem.File;
 	
+	import mx.collections.ArrayCollection;
+	
 	import org.iotashan.oauth.OAuthToken;
 	import org.robotlegs.mvcs.Actor;
 	
-	public class LibraryModel extends Actor
+	public class FoursquareModel extends Actor
 	{
 		
 		/**
@@ -46,13 +48,30 @@ package com.foursquare.models
 		 */		
 		public var currentUser:UserVO;
 		
-		public function LibraryModel()
+		private var _checkins:ArrayCollection=new ArrayCollection();
+		
+		public function FoursquareModel()
 		{
 			super();
 			//instantiate oauthFile
 			oauthFile = File.applicationStorageDirectory.resolvePath("user/oauth_token.xml");
 		}
 		
+		/**
+		 * CHECKINS 
+		 * @return 
+		 * 
+		 */		
+		public function get checkins():ArrayCollection
+		{
+			return _checkins;
+		}
+
+		public function set checkins(value:ArrayCollection):void
+		{
+			_checkins = value;
+		}
+
 		public function log(value:String):void{
 			_log = value;
 		}

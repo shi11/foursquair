@@ -6,7 +6,7 @@
 
 package com.foursquare.controller
 {
-	import com.foursquare.models.LibraryModel;
+	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.views.navigation.Navigation;
 	
 	import flash.filesystem.File;
@@ -17,7 +17,7 @@ package com.foursquare.controller
 	{
 		
 		[Inject]
-		public var model:LibraryModel;
+		public var model:FoursquareModel;
 		
 		public function Logout()
 		{

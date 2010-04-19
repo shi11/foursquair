@@ -10,8 +10,6 @@ package com.foursquare.events
 	
 	import flash.events.Event;
 	
-	import mx.collections.ArrayCollection;
-	
 	public class CheckinEvent extends Event
 	{
 		
@@ -29,7 +27,7 @@ package com.foursquare.events
 		public var message:String;
 		
 		public var venueVO:VenueVO;
-		public var checkins:ArrayCollection;
+		public var checkins:Array;
 		
 		public var interval:int;
 		public var useGrowl:Boolean;

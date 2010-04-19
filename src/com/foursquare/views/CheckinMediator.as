@@ -10,14 +10,16 @@ package com.foursquare.views
 	import com.foursquare.events.UserEvent;
 	import com.foursquare.events.VenueEvent;
 	import com.foursquare.models.Constants;
+	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.models.vo.UserVO;
 	import com.foursquare.views.checkins.CheckinView;
-
+	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
-
+	
 	import mx.collections.ArrayCollection;
-
+	import mx.events.CollectionEvent;
+	
 	import org.robotlegs.mvcs.Mediator;
 
 	public class CheckinMediator extends Mediator
@@ -25,8 +27,9 @@ package com.foursquare.views
 
 		[Inject]
 		public var checkinView : CheckinView;
-
-		private var _checkins : ArrayCollection;
+		
+		[Inject]
+		public var foursquareModel:FoursquareModel;
 
 		/**
 		 * flag for when to start polling
@@ -50,6 +53,8 @@ package com.foursquare.views
 			eventMap.mapListener(checkinView, UserEvent.GET_DETAILS, getUserDetails);
 			eventMap.mapListener(checkinView, VenueEvent.GET_VENUE_DETAILS, getVenueDetails);
 
+			foursquareModel.checkins.addEventListener(CollectionEvent.COLLECTION_CHANGE, onCheckinsChange);
+			
 			getCheckins();
 		}
 
@@ -72,22 +77,17 @@ package com.foursquare.views
 		{
 			checkinView.openUserDetails(userVO);
 		}
-
-		public function set checkins(value : ArrayCollection) : void
-		{
-			_checkins = value;
-			checkinView.checkins = _checkins;
-
+		
+		public function handleResults():void{
 			if (_firstRead)
 			{
 				_firstRead = false;
 				startPolling();
 			}
 		}
-
-		public function get checkins() : ArrayCollection
-		{
-			return _checkins;
+		
+		private function onCheckinsChange(event:CollectionEvent):void{
+			checkinView.createView( foursquareModel.checkins );
 		}
 
 		private function getCheckins(event : TimerEvent=null) : void

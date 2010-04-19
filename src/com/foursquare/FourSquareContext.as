@@ -20,7 +20,7 @@ package com.foursquare
 	import com.foursquare.events.SearchEvent;
 	import com.foursquare.events.StartupEvent;
 	import com.foursquare.events.UserEvent;
-	import com.foursquare.models.LibraryModel;
+	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.services.FoursquareService;
 	import com.foursquare.services.IFoursquareService;
 	import com.foursquare.services.IGeoService;
@@ -84,7 +84,7 @@ package com.foursquare
 			
 			
 			//map model
-			injector.mapSingleton( LibraryModel );
+			injector.mapSingleton( FoursquareModel );
 			
 			//map service
 			injector.mapSingletonOf( IFoursquareService, FoursquareService );
