@@ -74,12 +74,36 @@
 								   showEffect="{viewStackTransitionEffect}"/>
 			<search:SearchView id="searchView" height="100%" width="100%"
 							   includeIn="search"
+							   shout="{bounceShoutEvent(event)}"
 							   hideEffect="{viewStackTransitionEffect}"
 							   showEffect="{viewStackTransitionEffect}"/>
 
-			<shout:ShoutBox id="shoutBox" height="30" width="100%"
+			<!--<shout:ShoutBox id="shoutBox" height="30" width="100%"
 							bottom="0"
-							shout="{bounceShoutEvent(event)}"/>
+							shout="{bounceShoutEvent(event)}"/>-->
+
+			<!--TODO: skin -->
+			<s:Group height="30" width="100%" bottom="0">
+				<s:Rect top="0" bottom="0" left="0" right="0"
+						alpha="1">
+					<s:fill>
+						<s:LinearGradient rotation="90">
+							<s:GradientEntry color="0x457b9b"/>
+							<s:GradientEntry color="0x94bccf"/>
+						</s:LinearGradient>
+					</s:fill>
+				</s:Rect>
+				<s:Rect top="0" bottom="0" left="0" right="0"
+						alpha=".2">
+					<s:fill>
+						<s:BitmapFill fillMode="repeat"
+									  source="@Embed('assets/images/repeatingBG.png')"/>
+					</s:fill>
+				</s:Rect>
+				
+				<s:Button id="openButton" left="0" right="0" top="0" bottom="0"
+						  skinClass="com.foursquare.skins.shout.ShoutBarButtonSkin"/>
+			</s:Group>
 
 		</s:VGroup>
 
@@ -90,8 +114,6 @@
 			  includeIn="splash">
 		<s:BitmapImage verticalCenter="0" horizontalCenter="0"
 					   source="@Embed(source='assets/images/foursquare_splash.png')"/>
-		<!--<mx:SWFLoader id="splashLoadingIndicator" source="@Embed(source='assets/swf/foursquare_loader.swf')"
-			 width="16" height="16" autoLoad="true" horizontalCenter="0" verticalCenter="0"/>-->
 	</s:VGroup>
 	<!--<s:Label fontSize="11" text="v. {updater.installedVersion}" right="5"/>-->
 </foursquare:FoursquareBase>

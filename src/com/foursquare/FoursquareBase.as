@@ -9,7 +9,6 @@ package com.foursquare
 	import com.foursquare.events.CheckinEvent;
 	import com.foursquare.events.LoginEvent;
 	import com.foursquare.views.nativeWindows.PurrWindow;
-	import com.foursquare.views.shout.ShoutBox;
 	
 	import mx.events.FlexEvent;
 	
@@ -17,8 +16,6 @@ package com.foursquare
 	
 	public class FoursquareBase extends WindowedApplication
 	{
-		
-		public var shoutBox:ShoutBox;
 		
 		private var _selectedSection:int;
 		private var purrWindow:PurrWindow;
@@ -40,7 +37,7 @@ package com.foursquare
 		 * handle shout shouts a message.
 		 */ 
 		public function handleShout( message:String ):void{
-			shoutBox.shoutSent();
+			//shoutBox.shoutSent();
 			growl("", message);
 		}
 		

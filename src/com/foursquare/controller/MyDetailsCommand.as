@@ -10,6 +10,7 @@ package com.foursquare.controller
 	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.services.IFoursquareService;
 	import com.foursquare.views.CheckinMediator;
+	import com.foursquare.views.MainViewMediator;
 	
 	import org.robotlegs.mvcs.Command;
 	
@@ -24,6 +25,9 @@ package com.foursquare.controller
 
 		[Inject]
 		public var foursquareModel:FoursquareModel;
+		
+		[Inject]
+		public var mainView:MainViewMediator;
 		
 		public function MyDetailsCommand()
 		{

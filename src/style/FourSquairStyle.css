@@ -77,6 +77,10 @@ s|Panel{
 	skin-class: ClassReference("com.foursquare.skins.login.GreyButtonSkin");
 }
 
+.checkinButtonSkin{
+	skin-class: ClassReference("com.foursquare.skins.header.CheckinButtonSkin");
+}
+
 /****************************************************************
 * login
 ****************************************************************/

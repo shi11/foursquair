@@ -27,6 +27,8 @@ package com.foursquare.controller
 		override public function execute() : void{
 			var oauthFile:File = model.oauthFile;
 			if(oauthFile.exists) oauthFile.deleteFile();
+			
+			model.checkins.source.splice(0, model.checkins.length);
 		}
 
 	}
