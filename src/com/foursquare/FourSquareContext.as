@@ -57,8 +57,12 @@ package com.foursquare
 			//map controller
 			commandMap.mapEvent( StartupEvent.STARTUP, StartupCommand, StartupEvent );
 
-			commandMap.mapEvent( CheckinEvent.SHOUT, CheckinCommand, CheckinEvent );
-			commandMap.mapEvent( CheckinEvent.SHOUT_SUCCESS, CheckinCommand, CheckinEvent );
+			//commandMap.mapEvent( CheckinEvent.SHOUT, CheckinCommand, CheckinEvent );
+			//commandMap.mapEvent( CheckinEvent.SHOUT_SUCCESS, CheckinCommand, CheckinEvent );
+
+			commandMap.mapEvent( CheckinEvent.CHECKIN, CheckinCommand, CheckinEvent );
+			commandMap.mapEvent( CheckinEvent.CHECKIN_SUCCESS, CheckinCommand, CheckinEvent );
+			
 			commandMap.mapEvent( CheckinEvent.READ, CheckinCommand, CheckinEvent );
 			commandMap.mapEvent( CheckinEvent.READ_RETURNED, CheckinCommand, CheckinEvent );
 			//settings event also handled by CheckinCommand

@@ -43,17 +43,17 @@ package com.foursquare.controller
 		
 		override public function execute():void{
 			switch(event.type){
-				case CheckinEvent.SHOUT:
+				case CheckinEvent.CHECKIN:
 					createCheckin( event ); 
 					break;
 				case CheckinEvent.READ:
 					getCheckins();
 					break;
 				case CheckinEvent.READ_RETURNED:
-					handleCheckins( event.checkins );
+					checkinsGot( event.checkins );
 					break;
-				case CheckinEvent.SHOUT_SUCCESS:
-					handleShout(event.message);
+				case CheckinEvent.CHECKIN_SUCCESS:
+					handleCheckin(event.message);
 					break;
 				case CheckinEvent.CHANGE_POLL_INTERVAL:
 					checkinMediator.pollInterval = (event as CheckinEvent).interval;
@@ -77,7 +77,7 @@ package com.foursquare.controller
 			foursquareService.getCheckins();
 		}
 		
-		private function handleCheckins( checkins: Array ):void{
+		private function checkinsGot( checkins: Array ):void{
 			
 			if( !checkinMediator.firstRead && mainViewMediator.showGrowl){
 				var newCheckins:ArrayCollection = findNewCheckins( checkins );
@@ -120,7 +120,7 @@ package com.foursquare.controller
 			checkinMediator.stopPolling();
 		}
 		
-		private function handleShout( message:String ):void{
+		private function handleCheckin( message:String ):void{
 			mainViewMediator.handleShout( message );
 			getCheckins();
 		}

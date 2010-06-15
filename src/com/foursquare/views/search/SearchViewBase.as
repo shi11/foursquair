@@ -87,7 +87,8 @@ package com.foursquare.views.search
 		
 		private function onShoutClick(event:MouseEvent):void
 		{
-			var checkinEvent:CheckinEvent = new CheckinEvent( CheckinEvent.SHOUT );
+			var checkinEvent:CheckinEvent = new CheckinEvent( CheckinEvent.CHECKIN );
+			checkinEvent.venueVO = searchList.selectedItem;
 			checkinEvent.message = shoutText.text;
 			dispatchEvent( checkinEvent );
 			

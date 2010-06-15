@@ -13,8 +13,11 @@ package com.foursquare.events
 	public class CheckinEvent extends Event
 	{
 		
-		public static const SHOUT:String = "shout";
-		public static const SHOUT_SUCCESS:String = "shoutSuccess";
+		//public static const SHOUT:String = "shout";
+		//public static const SHOUT_SUCCESS:String = "shoutSuccess";
+
+		public static const CHECKIN:String = "checkin";
+		public static const CHECKIN_SUCCESS:String = "checkinSuccess";
 		
 		public static const READ:String = "read";
 		public static const READ_RETURNED:String = "readReturned";

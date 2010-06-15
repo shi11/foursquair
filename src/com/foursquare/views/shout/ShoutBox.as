@@ -60,7 +60,7 @@ package com.foursquare.views.shout
 		
 		private function shoutMessage(event:MouseEvent):void
 		{
-			var checkinEvent:CheckinEvent = new CheckinEvent( CheckinEvent.SHOUT );
+			var checkinEvent:CheckinEvent = new CheckinEvent( CheckinEvent.CHECKIN );
 			checkinEvent.message = shoutText.text;
 			dispatchEvent( checkinEvent );
 			

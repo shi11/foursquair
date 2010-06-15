@@ -38,7 +38,6 @@ package com.foursquare.views
 			eventMap.mapListener( eventDispatcher, NavigationEvent.CHANGE, navigateToSection );
 			eventMap.mapListener( eventDispatcher, ErrorEvent.ERROR, displayError );
 
-			eventMap.mapListener( mainView, CheckinEvent.SHOUT, shoutMessage );
 			eventMap.mapListener( mainView, LoginEvent.LOGOUT, logout );
 		}
 		
@@ -67,10 +66,6 @@ package com.foursquare.views
 			}else{
 				mainView.setCurrentState(navigationEvent.section);
 			}
-		}
-		
-		private function shoutMessage( event:CheckinEvent ):void{
-			dispatch( event.clone() );
 		}
 		
 		/**

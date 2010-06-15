@@ -320,7 +320,7 @@ package com.foursquare.services
 		 */		
 		private function onSuccess_checkin(event:Event):void{
 			var xml:XML = new XML((event.target as URLLoader).data);
-			var checkinEvent:CheckinEvent = new CheckinEvent( CheckinEvent.SHOUT_SUCCESS );
+			var checkinEvent:CheckinEvent = new CheckinEvent( CheckinEvent.CHECKIN_SUCCESS );
 			checkinEvent.message = xml..message;
 			dispatch( checkinEvent );
 		}
