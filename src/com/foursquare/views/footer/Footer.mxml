@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					  xmlns:s="library://ns.adobe.com/flex/spark" 
+					  xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<s:Rect top="0" bottom="0" left="0" right="0"
+			alpha="1">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0x457b9b"/>
+				<s:GradientEntry color="0x94bccf"/>
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	<s:Rect top="0" bottom="0" left="0" right="0"
+			alpha=".2">
+		<s:fill>
+			<s:BitmapFill fillMode="repeat"
+						  source="@Embed('assets/images/repeatingBG.png')"/>
+		</s:fill>
+	</s:Rect>
+	
+</s:SkinnableContainer>
