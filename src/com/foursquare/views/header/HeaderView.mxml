@@ -7,6 +7,14 @@
 		 creationComplete="onCreationComplete(event)">
 	<fx:Script>
 		<![CDATA[
+			
+			/* TODO
+			*  Dispatched when the user clicks SHOUT to send a message
+			*  @eventType com.foursquare.events.CheckinEvent.SHOUT
+			
+			[Event(name="shout", type="com.foursquare.events.CheckinEvent")]
+			*/
+			
 			import com.foursquare.events.CheckinEvent;
 			import com.foursquare.events.LoginEvent;
 			import com.foursquare.models.vo.VenueVO;

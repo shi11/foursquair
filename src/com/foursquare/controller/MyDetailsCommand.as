@@ -9,7 +9,7 @@ package com.foursquare.controller
 	import com.foursquare.events.UserEvent;
 	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.services.IFoursquareService;
-	import com.foursquare.views.CheckinMediator;
+	import com.foursquare.views.FeedMediator;
 	import com.foursquare.views.MainViewMediator;
 	
 	import org.robotlegs.mvcs.Command;

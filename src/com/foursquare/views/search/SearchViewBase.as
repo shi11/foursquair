@@ -28,12 +28,6 @@ package com.foursquare.views.search
 	import spark.components.TextInput;
 	import spark.events.IndexChangeEvent;
 	
-	/*
-	*  Dispatched when the user clicks SHOUT to send a message
-	*  @eventType com.foursquare.events.CheckinEvent.SHOUT
-	*/
-	[Event(name="shout", type="com.foursquare.events.CheckinEvent")]
-	
 	public class SearchViewBase extends SkinnableContainer
 	{
 		

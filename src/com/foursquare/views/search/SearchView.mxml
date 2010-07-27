@@ -3,7 +3,7 @@
 					   xmlns:s="library://ns.adobe.com/flex/spark" 
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
 					   xmlns:search="com.foursquare.views.search.*"
-					   width="100%" height="100%" xmlns:shout="com.foursquare.views.shout.*">
+					   width="100%" height="100%" >
 	
 	<search:layout><s:VerticalLayout /></search:layout>
 	
@@ -36,19 +36,4 @@
 
 	</s:Group>	
 	
-	<s:Group height="150" width="100%">
-		<!--style of window-->
-		<s:Line width="100%" height="1" top="0">
-			<s:stroke>
-				<s:SolidColorStroke color="0xffffff" />
-			</s:stroke>
-		</s:Line>
-		
-		<s:Rect left="0" right="0" top="0" bottom="0">
-			<s:fill>
-				<s:SolidColor color="0x94bccf" />
-			</s:fill>
-		</s:Rect>
-	</s:Group>
-
 </search:SearchViewBase>

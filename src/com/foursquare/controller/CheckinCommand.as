@@ -11,7 +11,7 @@ package com.foursquare.controller
 	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.models.vo.CheckinVO;
 	import com.foursquare.services.IFoursquareService;
-	import com.foursquare.views.CheckinMediator;
+	import com.foursquare.views.FeedMediator;
 	import com.foursquare.views.MainViewMediator;
 	import com.foursquare.views.SettingsMediator;
 	
@@ -31,7 +31,7 @@ package com.foursquare.controller
 		public var mainViewMediator:MainViewMediator;
 		
 		[Inject]
-		public var checkinMediator:CheckinMediator;
+		public var checkinMediator:FeedMediator;
 		
 		[Inject]
 		public var foursquareModel:FoursquareModel;

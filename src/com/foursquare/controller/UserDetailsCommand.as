@@ -9,7 +9,7 @@ package com.foursquare.controller
 	import com.foursquare.events.UserEvent;
 	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.services.IFoursquareService;
-	import com.foursquare.views.CheckinMediator;
+	import com.foursquare.views.FeedMediator;
 	
 	import org.robotlegs.mvcs.Command;
 	
@@ -26,7 +26,7 @@ package com.foursquare.controller
 		public var foursquareModel:FoursquareModel;
 		
 		[Inject]
-		public var checkinMediator:CheckinMediator;
+		public var checkinMediator:FeedMediator;
 		
 		public function UserDetailsCommand()
 		{

@@ -22,7 +22,7 @@ package com.foursquare.views
 	
 	import org.robotlegs.mvcs.Mediator;
 
-	public class CheckinMediator extends Mediator
+	public class FeedMediator extends Mediator
 	{
 
 		[Inject]
@@ -42,20 +42,20 @@ package com.foursquare.views
 
 		private var timer : Timer;
 
-		public function CheckinMediator()
+		public function FeedMediator()
 		{
 			super();
 		}
 
 		override public function onRegister() : void
 		{
-			eventMap.mapListener(feedView, CheckinEvent.READ, getCheckins);
+			eventMap.mapListener(feedView, CheckinEvent.READ, getFeed);
 			eventMap.mapListener(feedView, UserEvent.GET_DETAILS, getUserDetails);
 			eventMap.mapListener(feedView, VenueEvent.GET_VENUE_DETAILS, getVenueDetails);
 
-			foursquareModel.feed.addEventListener(CollectionEvent.COLLECTION_CHANGE, onCheckinsChange);
+			foursquareModel.feed.addEventListener(CollectionEvent.COLLECTION_CHANGE, onFeedChange);
 			
-			getCheckins();
+			getFeed();
 		}
 
 		public function startPolling() : void
@@ -63,7 +63,7 @@ package com.foursquare.views
 			if (!timer)
 			{
 				timer = new Timer(_pollInterval);
-				timer.addEventListener(TimerEvent.TIMER, getCheckins);
+				timer.addEventListener(TimerEvent.TIMER, getFeed);
 			}
 			timer.start();
 		}
@@ -86,11 +86,11 @@ package com.foursquare.views
 			}
 		}
 		
-		private function onCheckinsChange(event:CollectionEvent):void{
+		private function onFeedChange(event:CollectionEvent):void{
 			feedView.createView( foursquareModel.feed );
 		}
 
-		private function getCheckins(event : TimerEvent=null) : void
+		private function getFeed(event : TimerEvent=null) : void
 		{
 			eventDispatcher.dispatchEvent(new CheckinEvent(CheckinEvent.READ));
 		}

@@ -24,7 +24,7 @@ package com.foursquare
 	import com.foursquare.services.FoursquareService;
 	import com.foursquare.services.IFoursquareService;
 	import com.foursquare.services.IGeoService;
-	import com.foursquare.views.CheckinMediator;
+	import com.foursquare.views.FeedMediator;
 	import com.foursquare.views.HeaderMediator;
 	import com.foursquare.views.HistoryMediator;
 	import com.foursquare.views.LoginMediator;
@@ -98,7 +98,7 @@ package com.foursquare
 			mediatorMap.mapView( Navigation, NavigationMediator );
 			mediatorMap.mapView( LoginView, LoginMediator );
 			mediatorMap.mapView( SettingsView, SettingsMediator );
-			mediatorMap.mapView( FeedView, CheckinMediator, null, true, false );
+			mediatorMap.mapView( FeedView, FeedMediator, null, true, false );
 			mediatorMap.mapView( HistoryView, HistoryMediator, null, true, false );
 			mediatorMap.mapView( SearchView, SearchMediator, null, true, false );
 			mediatorMap.mapView( HeaderView, HeaderMediator );

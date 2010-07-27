@@ -13,7 +13,7 @@
 						   xmlns:header="com.foursquare.views.header.*"
 						   xmlns:search="com.foursquare.views.search.*"
 						   xmlns:shout="com.foursquare.views.shout.*"
-						   xmlns:settings="com.foursquare.views.settings.*" xmlns:footer="com.foursquare.views.footer.*" >
+						   xmlns:settings="com.foursquare.views.settings.*" xmlns:footer="com.foursquare.views.footer.*" xmlns:venue="com.foursquare.views.venue.*" >
 
 	<fx:Style source="style/FourSquairStyle.css"/>
 
@@ -70,11 +70,15 @@
 								 includeIn="history"
 								 hideEffect="{viewStackTransitionEffect}"
 								 showEffect="{viewStackTransitionEffect}"/>
-			<search:SearchView id="searchView" height="100%" width="100%"
+			<venue:VenueView id="venueView" height="100%" width="100%"
+							 includeIn="search"
+							 hideEffect="{viewStackTransitionEffect}"
+							 showEffect="{viewStackTransitionEffect}" />
+			<!--<search:SearchView id="searchView" height="100%" width="100%"
 							   includeIn="search"
 							   shout="{bounceShoutEvent(event)}"
 							   hideEffect="{viewStackTransitionEffect}"
-							   showEffect="{viewStackTransitionEffect}"/>
+							   showEffect="{viewStackTransitionEffect}"/>-->
 			<settings:SettingsView id="settingsView" height="100%" width="100%"
 								   includeIn="settings"
 								   hideEffect="{viewStackTransitionEffect}"
