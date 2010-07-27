@@ -12,7 +12,7 @@ package com.foursquare.views
 	import com.foursquare.models.Constants;
 	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.models.vo.UserVO;
-	import com.foursquare.views.checkins.CheckinView;
+	import com.foursquare.views.feed.FeedView;
 	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
@@ -26,7 +26,7 @@ package com.foursquare.views
 	{
 
 		[Inject]
-		public var checkinView : CheckinView;
+		public var checkinView : FeedView;
 		
 		[Inject]
 		public var foursquareModel:FoursquareModel;

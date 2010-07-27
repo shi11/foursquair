@@ -4,7 +4,7 @@
 // Created: Nov 16, 2009 
 ////////////////////////////////////////////////////////////
 
-package com.foursquare.views.checkins
+package com.foursquare.views.feed
 {
 	
 	import com.foursquare.controller.UserDetailsCommand;
@@ -21,12 +21,12 @@ package com.foursquare.views.checkins
 	
 	import spark.components.SkinnableContainer;
 	
-	public class CheckinViewBase extends SkinnableContainer
+	public class FeedViewBase extends SkinnableContainer
 	{
 		
 		private var _checkins:ArrayCollection;
 		
-		public function CheckinViewBase()
+		public function FeedViewBase()
 		{
 			super();
 			addEventListener( UserEvent.GET_DETAILS, getUserDetails, true);
@@ -41,15 +41,15 @@ package com.foursquare.views.checkins
 		public function createView(value:ArrayCollection):void{
 			_checkins = value;
 			
-			var checkinItem:CheckinItem;
+			var checkinItem:FeedItem;
 			for (var i:int=0; i<numElements;i++){
-				checkinItem = getElementAt(i) as CheckinItem;
+				checkinItem = getElementAt(i) as FeedItem;
 				checkinItem.unload();
 			}
 			removeAllElements();
 			
 			for each(var checkin:CheckinVO in _checkins){
-				checkinItem = new CheckinItem();
+				checkinItem = new FeedItem();
 				checkinItem.checkinVO = checkin;
 				addElement( checkinItem );
 			}

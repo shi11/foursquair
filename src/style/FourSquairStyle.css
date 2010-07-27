@@ -5,7 +5,7 @@
 @namespace shout "com.foursquare.views.shout.*";
 @namespace history "com.foursquare.views.history.*";
 @namespace search "com.foursquare.views.search.*";
-@namespace checkins "com.foursquare.views.checkins.*";
+@namespace feed "com.foursquare.views.feed.*";
 @namespace user "com.foursquare.views.user.*";
 
 /*------FONTS------*/
@@ -123,8 +123,8 @@ login|LoginView{
 /****************************************************************
 * checkin
 ****************************************************************/
-checkins|CheckinView {
-	skin-class: ClassReference("com.foursquare.skins.checkin.CheckinViewSkin");
+feed|FeedView {
+	skin-class: ClassReference("com.foursquare.skins.feed.FeedViewSkin");
 }
 
 user|UserDetailsView {

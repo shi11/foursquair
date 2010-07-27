@@ -66,7 +66,7 @@ package com.foursquare.controller
 			
 			//navigate to Checkin.
 			var navigationEvent:NavigationEvent = new NavigationEvent( NavigationEvent.CHANGE );
-			navigationEvent.section = Section.CHECKINS;
+			navigationEvent.section = Section.FEED;
 			dispatch( navigationEvent );
 		}
 	}

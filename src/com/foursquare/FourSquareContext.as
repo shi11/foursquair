@@ -32,7 +32,7 @@ package com.foursquare
 	import com.foursquare.views.NavigationMediator;
 	import com.foursquare.views.SearchMediator;
 	import com.foursquare.views.SettingsMediator;
-	import com.foursquare.views.checkins.CheckinView;
+	import com.foursquare.views.feed.FeedView;
 	import com.foursquare.views.header.HeaderView;
 	import com.foursquare.views.history.HistoryView;
 	import com.foursquare.views.login.LoginView;
@@ -98,7 +98,7 @@ package com.foursquare
 			mediatorMap.mapView( Navigation, NavigationMediator );
 			mediatorMap.mapView( LoginView, LoginMediator );
 			mediatorMap.mapView( SettingsView, SettingsMediator );
-			mediatorMap.mapView( CheckinView, CheckinMediator, null, true, false );
+			mediatorMap.mapView( FeedView, CheckinMediator, null, true, false );
 			mediatorMap.mapView( HistoryView, HistoryMediator, null, true, false );
 			mediatorMap.mapView( SearchView, SearchMediator, null, true, false );
 			mediatorMap.mapView( HeaderView, HeaderMediator );

@@ -4,7 +4,7 @@
 						   xmlns:fx="http://ns.adobe.com/mxml/2009"
 						   xmlns:s="library://ns.adobe.com/flex/spark"
 						   xmlns:login="com.foursquare.views.login.*"
-						   xmlns:checkins="com.foursquare.views.checkins.*"
+						   xmlns:feed="com.foursquare.views.feed.*"
 						   xmlns:history="com.foursquare.views.history.*"
 						   xmlns:venues="com.foursquare.views.venues.*"
 						   xmlns:ws="de.websector.utils.updater.ui.*"
@@ -13,7 +13,7 @@
 						   xmlns:header="com.foursquare.views.header.*"
 						   xmlns:search="com.foursquare.views.search.*"
 						   xmlns:shout="com.foursquare.views.shout.*"
-						   xmlns:settings="com.foursquare.views.settings.*" xmlns:footer="com.foursquare.views.footer.*">
+						   xmlns:settings="com.foursquare.views.settings.*" xmlns:footer="com.foursquare.views.footer.*" >
 
 	<fx:Style source="style/FourSquairStyle.css"/>
 
@@ -36,7 +36,7 @@
 	<foursquare:states>
 		<s:State name="login"/>
 		<s:State name="splash"/>
-		<s:State name="checkins"/>
+		<s:State name="feed"/>
 		<s:State name="history"/>
 		<s:State name="settings"/>
 		<s:State name="search"/>
@@ -62,23 +62,23 @@
 			
 			<s:Label text="{currentState}" />
 			
-			<checkins:CheckinView id="checkinView" height="100%" width="100%"
-								  includeIn="checkins"
+			<feed:FeedView id="feedView" height="100%" width="100%"
+								  includeIn="feed"
 								  hideEffect="{viewStackTransitionEffect}"
 								  showEffect="{viewStackTransitionEffect}"/>
 			<history:HistoryView id="historyView" height="100%" width="100%"
 								 includeIn="history"
 								 hideEffect="{viewStackTransitionEffect}"
 								 showEffect="{viewStackTransitionEffect}"/>
-			<settings:SettingsView id="settingsView" height="100%" width="100%"
-								   includeIn="settings"
-								   hideEffect="{viewStackTransitionEffect}"
-								   showEffect="{viewStackTransitionEffect}"/>
 			<search:SearchView id="searchView" height="100%" width="100%"
 							   includeIn="search"
 							   shout="{bounceShoutEvent(event)}"
 							   hideEffect="{viewStackTransitionEffect}"
 							   showEffect="{viewStackTransitionEffect}"/>
+			<settings:SettingsView id="settingsView" height="100%" width="100%"
+								   includeIn="settings"
+								   hideEffect="{viewStackTransitionEffect}"
+								   showEffect="{viewStackTransitionEffect}"/>
 
 			<!--<shout:ShoutBox id="shoutBox" height="30" width="100%"
 							bottom="0"

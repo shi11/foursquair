@@ -24,7 +24,7 @@
 				if(buttonBar.selectedIndex >= 0){
 					switch( buttonBar.selectedIndex ){
 						case 0:
-							navigationEvent.section = Section.CHECKINS;
+							navigationEvent.section = Section.FEED;
 							break;
 						case 1:
 							navigationEvent.section = Section.HISTORY;
