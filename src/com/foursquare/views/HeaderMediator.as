@@ -6,7 +6,9 @@
 
 package com.foursquare.views
 {
+	import com.foursquare.events.CheckinEvent;
 	import com.foursquare.events.UserEvent;
+	import com.foursquare.events.VenueEvent;
 	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.views.header.HeaderView;
 	
@@ -28,10 +30,16 @@ package com.foursquare.views
 		override public function onRegister():void
 		{
 			eventMap.mapListener( eventDispatcher, UserEvent.MY_DETAILS_GOT, onMyDetailsGot );
+			eventMap.mapListener( eventDispatcher, VenueEvent.VENUE_CHANGING, onVenueChanging );
+			eventMap.mapListener( headerView, CheckinEvent.CHECKIN, shoutMessage );
 			
 			if(model.currentUser){
 				showUser(model.currentUser.firstname, model.currentUser.lastname, model.currentUser.photo);
 			}
+		}
+		
+		private function shoutMessage( event:CheckinEvent ):void{
+			dispatch( event.clone() );
 		}
 		
 		/**
@@ -56,6 +64,15 @@ package com.foursquare.views
 			var lastName:String;
 			event.userVO.lastname ? lastName = event.userVO.lastname : lastName = "";
 			showUser(event.userVO.firstname, lastName, event.userVO.photo);
+		}
+		
+		/**
+		 * when user is changing their venue 
+		 * @param event
+		 * 
+		 */		
+		private function onVenueChanging(event:VenueEvent):void{
+			headerView.selectedVenue = event.venue;
 		}
 	}
 }

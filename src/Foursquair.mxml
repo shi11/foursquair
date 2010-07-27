@@ -58,7 +58,7 @@
 
 		<s:VGroup height="100%" width="100%"
 				  excludeFrom="login">
-			<header:HeaderView id="header" styleName="headerSkin" height="73" width="100%"/>
+			<header:HeaderView id="header" styleName="headerSkin" height="100" width="100%"/>
 			
 			<s:Label text="{currentState}" />
 			

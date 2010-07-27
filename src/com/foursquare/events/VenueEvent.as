@@ -14,6 +14,7 @@ package com.foursquare.events
 	{
 		public static const GET_VENUE_DETAILS:String = "getVenueDetails";
 		public static const VENUE_DETAILS_GOT:String = "venueDetailsGot";
+		public static const VENUE_CHANGING:String = "venueChanging";
 		
 		public var venue:VenueVO;
 		

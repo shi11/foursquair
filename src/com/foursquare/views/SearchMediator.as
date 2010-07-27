@@ -8,6 +8,7 @@ package com.foursquare.views
 {
 	import com.foursquare.events.CheckinEvent;
 	import com.foursquare.events.SearchEvent;
+	import com.foursquare.events.VenueEvent;
 	import com.foursquare.models.vo.CityVO;
 	import com.foursquare.views.search.SearchView;
 	
@@ -29,13 +30,13 @@ package com.foursquare.views
 		
 		override public function onRegister() : void{
 			eventMap.mapListener( searchView, SearchEvent.QUERY, doQuery );
-			eventMap.mapListener( searchView, CheckinEvent.CHECKIN, shoutMessage );
+			eventMap.mapListener( searchView, VenueEvent.VENUE_CHANGING, bounceVenueChanging );
 		
 			getUserLocation();
 		}
 		
 		
-		private function shoutMessage( event:CheckinEvent ):void{
+		private function bounceVenueChanging( event:VenueEvent ):void{
 			dispatch( event.clone() );
 		}
 		

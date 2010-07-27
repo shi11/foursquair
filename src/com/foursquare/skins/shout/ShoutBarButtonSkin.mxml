@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
-		xmlns:mx="library://ns.adobe.com/flex/mx">
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		width="100%" height="100%"
+		alpha.disabled="0.5">
 	
 	<!-- host component -->
 	<fx:Metadata>
@@ -16,19 +18,21 @@
 		<s:State name="down" />
 		<s:State name="disabled" />
 	</s:states>
-	<s:Group left="0" right="0" top="0" bottom="0" buttonMode="true" useHandCursor="true">
-		<s:Rect left="0" right="0" top="0" bottom="0">
+		
+		<!-- layer 2: fill -->
+		<s:Rect left="0" right="0" top="0" bottom="0" radiusX="8" radiusY="8">
+			<s:stroke>
+				<s:SolidColorStroke color="0xffffff" weight="1" />
+			</s:stroke>
 			<s:fill>
-				<s:SolidColor color="0xffffff" alpha="0" />
+				<s:SolidColor color="0x555665" />
 			</s:fill>
-		</s:Rect> 
+		</s:Rect>
+		
 		<s:BitmapImage source="@Embed('assets/icons/icon-shout.png')"
 				   top="5" left="5" />
-		<s:BitmapImage source="@Embed('assets/icons/dimple-shoutbox.png')"
-				   top="7" horizontalCenter="0"/>
 		
 		<s:Label text="{resourceManager.getString('myResources', 'CHECKIN')}"
 				 color="0xffffff" fontSize="14" top="7" left="25" />
-	</s:Group>
 	
 </s:Skin>

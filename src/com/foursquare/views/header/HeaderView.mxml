@@ -3,43 +3,86 @@
 		xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 xmlns:navigation="com.foursquare.views.navigation.*">
+		 xmlns:navigation="com.foursquare.views.navigation.*"
+		 creationComplete="onCreationComplete(event)">
 	<fx:Script>
 		<![CDATA[
+			import com.foursquare.events.CheckinEvent;
 			import com.foursquare.events.LoginEvent;
+			import com.foursquare.models.vo.VenueVO;
 			
-			/* private var _sectionName:String;
-
-			public function get sectionName():String
-			{
-				return _sectionName;
+			import mx.events.FlexEvent;
+			
+			private var _selectedVenue:VenueVO;
+			
+			private function onCreationComplete(event:FlexEvent):void{
+				shoutButton.addEventListener( MouseEvent.CLICK, onShoutClick);
 			}
-
-			public function set sectionName(value:String):void
+			
+			public function shoutSent():void{
+				shoutText.text = "";
+				shoutButton.enabled = true;
+			}
+			
+			private function onShoutClick(event:MouseEvent):void
 			{
-				_sectionName = value;
-				selectedSection.text = _sectionName.toUpperCase();
-			} */
-
+				var checkinEvent:CheckinEvent = new CheckinEvent( CheckinEvent.CHECKIN );
+				
+				checkinEvent.venueVO = _selectedVenue;
+				
+				checkinEvent.message = shoutText.text;
+				dispatchEvent( checkinEvent );
+				
+				shoutButton.enabled = false;
+			}
+			
+			public function set selectedVenue(value:VenueVO):void{
+				_selectedVenue = value;
+				currentLocation.text = _selectedVenue.name;
+			}
+			
+			public function get selectedVenue():VenueVO{
+				return _selectedVenue;
+			}
+			
 		]]>
 	</fx:Script>
-
-	<!--<s:Label id="selectedSection" color="0xffffff" fontSize="14" top="15" />-->
 	
-	<!--image with 1 px white border-->
-	<s:Group width="42" height="42" left="0" top="10">
-		<s:Rect width="100%" height="100%">
-			<s:stroke>
-				<s:SolidColorStroke color="0xffffff" />
-			</s:stroke>
-		</s:Rect>
-		<mx:Image id="userImage" smoothBitmapContent="true" width="40" height="40" left="1" top="1" />
-	</s:Group>
+	<s:layout>
+		<s:VerticalLayout />
+	</s:layout>
 
-	<s:HGroup bottom="0" left="0" >
+	<s:HGroup width="100%">
 		<s:Label id="userName" textAlign="right" color="0xffffff"
 				 fontSize="14" />
+		<mx:Spacer width="100%" />
 		<s:Label text="Logout" click="{dispatchEvent(new LoginEvent(LoginEvent.LOGOUT))}"
 				 fontSize="12" color="0xCCCCCC"/>
+	</s:HGroup>
+	
+	<s:HGroup width="100%" height="100%">
+		
+		<!--image with 1 px white border-->
+		<s:Group width="42" height="42" left="0" top="10">
+			<s:Rect width="100%" height="100%">
+				<s:stroke>
+					<s:SolidColorStroke color="0xffffff" />
+				</s:stroke>
+			</s:Rect>
+			<mx:Image id="userImage" smoothBitmapContent="true" width="40" height="40" left="1" top="1" />
+		</s:Group>
+	
+		<s:TextArea id="shoutText" width="100%" height="40"
+					verticalCenter="0"  />
+	</s:HGroup>
+
+	<s:HGroup bottom="10">
+		<s:Label id="currentLocation" text="Set Current Location" />
+		
+		<!--styleName="greyButtonSkin"-->
+		<s:Button id="shoutButton" label="Shout" 
+				  skinClass="com.foursquare.skins.shout.ShoutBarButtonSkin"
+				  color="0xffffff" fontWeight="bold" fontSize="12"
+				  width="100" height="22" right="0" />
 	</s:HGroup>
 </s:SkinnableContainer>
