@@ -8,7 +8,7 @@ package com.foursquare.services
 	{
 		function login(event:LoginEvent):void;
 		function checkin(shout : String="", venueVO:VenueVO=null):void;
-		function getCheckins():void;
+		function getFeed():void;
 		function getHistory(limit:int):void;
 		function getMyDetails(userVO:UserVO):void;
 		function getUserDetails(userVO:UserVO, badges:Boolean=false, mayor:Boolean=false):void;

@@ -28,7 +28,7 @@ package com.foursquare.controller
 			var oauthFile:File = model.oauthFile;
 			if(oauthFile.exists) oauthFile.deleteFile();
 			
-			model.checkins.source.splice(0, model.checkins.length);
+			model.feed.source.splice(0, model.feed.length);
 		}
 
 	}

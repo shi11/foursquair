@@ -26,7 +26,7 @@ package com.foursquare.views
 	{
 
 		[Inject]
-		public var checkinView : FeedView;
+		public var feedView : FeedView;
 		
 		[Inject]
 		public var foursquareModel:FoursquareModel;
@@ -49,11 +49,11 @@ package com.foursquare.views
 
 		override public function onRegister() : void
 		{
-			eventMap.mapListener(checkinView, CheckinEvent.READ, getCheckins);
-			eventMap.mapListener(checkinView, UserEvent.GET_DETAILS, getUserDetails);
-			eventMap.mapListener(checkinView, VenueEvent.GET_VENUE_DETAILS, getVenueDetails);
+			eventMap.mapListener(feedView, CheckinEvent.READ, getCheckins);
+			eventMap.mapListener(feedView, UserEvent.GET_DETAILS, getUserDetails);
+			eventMap.mapListener(feedView, VenueEvent.GET_VENUE_DETAILS, getVenueDetails);
 
-			foursquareModel.checkins.addEventListener(CollectionEvent.COLLECTION_CHANGE, onCheckinsChange);
+			foursquareModel.feed.addEventListener(CollectionEvent.COLLECTION_CHANGE, onCheckinsChange);
 			
 			getCheckins();
 		}
@@ -75,7 +75,7 @@ package com.foursquare.views
 
 		public function setUserDetails(userVO : UserVO) : void
 		{
-			checkinView.openUserDetails(userVO);
+			feedView.openUserDetails(userVO);
 		}
 		
 		public function handleResults():void{
@@ -87,7 +87,7 @@ package com.foursquare.views
 		}
 		
 		private function onCheckinsChange(event:CollectionEvent):void{
-			checkinView.createView( foursquareModel.checkins );
+			feedView.createView( foursquareModel.feed );
 		}
 
 		private function getCheckins(event : TimerEvent=null) : void

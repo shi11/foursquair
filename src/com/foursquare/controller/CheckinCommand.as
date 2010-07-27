@@ -47,10 +47,10 @@ package com.foursquare.controller
 					createCheckin( event ); 
 					break;
 				case CheckinEvent.READ:
-					getCheckins();
+					getFeed();
 					break;
 				case CheckinEvent.READ_RETURNED:
-					checkinsGot( event.checkins );
+					feedGot( event.checkins );
 					break;
 				case CheckinEvent.CHECKIN_SUCCESS:
 					handleCheckin(event.message);
@@ -73,43 +73,43 @@ package com.foursquare.controller
 			}
 		}
 		
-		private function getCheckins():void{
-			foursquareService.getCheckins();
+		private function getFeed():void{
+			foursquareService.getFeed();
 		}
 		
-		private function checkinsGot( checkins: Array ):void{
+		private function feedGot( feed: Array ):void{
 			
 			if( !checkinMediator.firstRead && mainViewMediator.showGrowl){
-				var newCheckins:ArrayCollection = findNewCheckins( checkins );
-				for each(var checkin:CheckinVO in newCheckins){
+				var newFeed:ArrayCollection = findNewFeed( feed );
+				for each(var checkin:CheckinVO in newFeed){
 					mainViewMediator.growl( checkin );
 				}
 			}
 
 			checkinMediator.handleResults();
-			foursquareModel.checkins.source = checkins;
+			foursquareModel.feed.source = feed;
 		}
 		
 		/**
-		 * checks for new checkins since last timerEvent...
+		 * checks for new feed since last timerEvent...
 		 * @param currentCheckin
 		 * @param newCheckin
 		 * @return 
 		 * 
 		 */		
-		private function findNewCheckins(checkins:Array):ArrayCollection{
+		private function findNewFeed(feed:Array):ArrayCollection{
 			
 			var timeFromLastPoll:Number = new Date().time - checkinMediator.pollInterval;
-			var newCheckins:ArrayCollection = new ArrayCollection();
+			var newFeed:ArrayCollection = new ArrayCollection();
 			
-			for each(var checkin:CheckinVO in checkins){
+			for each(var checkin:CheckinVO in feed){
 				if( checkin.created.time > timeFromLastPoll){
-					newCheckins.addItem( checkin );
+					newFeed.addItem( checkin );
 				}else{
 					break;
 				}
 			}
-			return newCheckins;			
+			return newFeed;			
 		}
 		
 		private function startPolling():void{
@@ -122,7 +122,7 @@ package com.foursquare.controller
 		
 		private function handleCheckin( message:String ):void{
 			mainViewMediator.handleShout( message );
-			getCheckins();
+			getFeed();
 		}
 
 	}

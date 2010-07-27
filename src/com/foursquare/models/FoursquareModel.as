@@ -48,7 +48,7 @@ package com.foursquare.models
 		 */		
 		public var currentUser:UserVO;
 		
-		private var _checkins:ArrayCollection=new ArrayCollection();
+		private var _feed:ArrayCollection=new ArrayCollection();
 		
 		public function FoursquareModel()
 		{
@@ -62,14 +62,14 @@ package com.foursquare.models
 		 * @return 
 		 * 
 		 */		
-		public function get checkins():ArrayCollection
+		public function get feed():ArrayCollection
 		{
-			return _checkins;
+			return _feed;
 		}
 
-		public function set checkins(value:ArrayCollection):void
+		public function set feed(value:ArrayCollection):void
 		{
-			_checkins = value;
+			_feed = value;
 		}
 
 		public function log(value:String):void{

@@ -104,21 +104,8 @@ package com.foursquare.services
 		/**
 		 * Get Checkins 
 		 */		
-		public function getCheckins():void
+		public function getFeed():void
 		{
-			/*var service:HTTPService = new HTTPService();
-			
-			OAuthRequest = new OAuthRequest(
-			
-			service.url = oauth.buildRequest(
-				URLRequestMethod.GET, 
-				_url+'checkins.xml',
-				model.oauth_token);
-
-			service.addEventListener(FaultEvent.FAULT, onFault);
-			service.addEventListener(ResultEvent.RESULT, onResult_getCheckins);
-			var token:AsyncToken = service.send();*/
-			
 			var request : URLRequest = oauth.buildRequest(
 				URLRequestMethod.GET, 
 				_url+'checkins.xml',
@@ -126,7 +113,7 @@ package com.foursquare.services
 			
 			var loader : URLLoader = new URLLoader();
 			loader.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
-			loader.addEventListener(Event.COMPLETE, onResult_getCheckins);
+			loader.addEventListener(Event.COMPLETE, onResult_getFeed);
 			loader.load(request);
 		}
 		
@@ -264,11 +251,11 @@ package com.foursquare.services
 		}
 		
 		/**
-		 * process results of getCheckins 
+		 * process results of getFeed 
 		 * @param event
 		 * 
 		 */		
-		private function onResult_getCheckins(event : Event):void{
+		private function onResult_getFeed(event : Event):void{
 			var checkins:Array = new Array();
 			var xml:XML = new XML((event.target as URLLoader).data);
 			
