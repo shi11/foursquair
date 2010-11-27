@@ -7,10 +7,14 @@
 package com.foursquare.views
 {
 	import com.foursquare.events.CheckinEvent;
+	import com.foursquare.events.IssueEvent;
+	import com.foursquare.events.NavigationEvent;
 	import com.foursquare.events.UserEvent;
 	import com.foursquare.events.VenueEvent;
 	import com.foursquare.models.FoursquareModel;
 	import com.foursquare.views.header.HeaderView;
+	
+	import flash.events.Event;
 	
 	import org.robotlegs.mvcs.Mediator;
 
@@ -31,14 +35,17 @@ package com.foursquare.views
 		{
 			eventMap.mapListener( eventDispatcher, UserEvent.MY_DETAILS_GOT, onMyDetailsGot );
 			eventMap.mapListener( eventDispatcher, VenueEvent.VENUE_CHANGING, onVenueChanging );
-			eventMap.mapListener( headerView, CheckinEvent.CHECKIN, shoutMessage );
+			eventMap.mapListener( eventDispatcher, CheckinEvent.CHECKIN_SUCCESS, onCheckinSuccess );
+			eventMap.mapListener( headerView, CheckinEvent.CHECKIN, bounceEvent );
+			eventMap.mapListener( headerView, IssueEvent.READ, bounceEvent );
+			eventMap.mapListener( headerView, NavigationEvent.CHANGE, bounceEvent );
 			
 			if(model.currentUser){
 				showUser(model.currentUser.firstname, model.currentUser.lastname, model.currentUser.photo);
 			}
 		}
 		
-		private function shoutMessage( event:CheckinEvent ):void{
+		private function bounceEvent( event:Event ):void{
 			dispatch( event.clone() );
 		}
 		
@@ -73,6 +80,10 @@ package com.foursquare.views
 		 */		
 		private function onVenueChanging(event:VenueEvent):void{
 			headerView.selectedVenue = event.venue;
+		}
+		
+		private function onCheckinSuccess(event:CheckinEvent):void{
+			headerView.handleCheckinSuccess(event);
 		}
 	}
 }

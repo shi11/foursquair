@@ -8,6 +8,7 @@ package com.foursquare
 {
 	import com.foursquare.controller.CheckinCommand;
 	import com.foursquare.controller.HistoryCommand;
+	import com.foursquare.controller.IssueCommand;
 	import com.foursquare.controller.LoginCommand;
 	import com.foursquare.controller.Logout;
 	import com.foursquare.controller.MyDetailsCommand;
@@ -16,6 +17,7 @@ package com.foursquare
 	import com.foursquare.controller.UserDetailsCommand;
 	import com.foursquare.events.CheckinEvent;
 	import com.foursquare.events.HistoryEvent;
+	import com.foursquare.events.IssueEvent;
 	import com.foursquare.events.LoginEvent;
 	import com.foursquare.events.SearchEvent;
 	import com.foursquare.events.StartupEvent;
@@ -24,6 +26,8 @@ package com.foursquare
 	import com.foursquare.services.FoursquareService;
 	import com.foursquare.services.IFoursquareService;
 	import com.foursquare.services.IGeoService;
+	import com.foursquare.services.ISeeClickFixService;
+	import com.foursquare.services.SeeClickFixService;
 	import com.foursquare.views.FeedMediator;
 	import com.foursquare.views.HeaderMediator;
 	import com.foursquare.views.HistoryMediator;
@@ -57,9 +61,6 @@ package com.foursquare
 			//map controller
 			commandMap.mapEvent( StartupEvent.STARTUP, StartupCommand, StartupEvent );
 
-			//commandMap.mapEvent( CheckinEvent.SHOUT, CheckinCommand, CheckinEvent );
-			//commandMap.mapEvent( CheckinEvent.SHOUT_SUCCESS, CheckinCommand, CheckinEvent );
-
 			commandMap.mapEvent( CheckinEvent.CHECKIN, CheckinCommand, CheckinEvent );
 			commandMap.mapEvent( CheckinEvent.CHECKIN_SUCCESS, CheckinCommand, CheckinEvent );
 			
@@ -85,6 +86,7 @@ package com.foursquare
 			commandMap.mapEvent( UserEvent.GET_DETAILS, UserDetailsCommand, UserEvent );
 			commandMap.mapEvent( UserEvent.DETAILS_GOT, UserDetailsCommand, UserEvent );
 			
+			commandMap.mapEvent( IssueEvent.READ, IssueCommand, IssueEvent );
 			
 			
 			//map model
@@ -92,6 +94,7 @@ package com.foursquare
 			
 			//map service
 			injector.mapSingletonOf( IFoursquareService, FoursquareService );
+			injector.mapSingletonOf( ISeeClickFixService, SeeClickFixService );
 			injector.mapSingletonOf( IGeoService, GeoIPService );
 			
 			//map view

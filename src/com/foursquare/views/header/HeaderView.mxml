@@ -7,16 +7,11 @@
 		 creationComplete="onCreationComplete(event)">
 	<fx:Script>
 		<![CDATA[
-			
-			/* TODO
-			*  Dispatched when the user clicks SHOUT to send a message
-			*  @eventType com.foursquare.events.CheckinEvent.SHOUT
-			
-			[Event(name="shout", type="com.foursquare.events.CheckinEvent")]
-			*/
-			
 			import com.foursquare.events.CheckinEvent;
+			import com.foursquare.events.IssueEvent;
 			import com.foursquare.events.LoginEvent;
+			import com.foursquare.events.NavigationEvent;
+			import com.foursquare.models.Section;
 			import com.foursquare.models.vo.VenueVO;
 			
 			import mx.events.FlexEvent;
@@ -25,6 +20,7 @@
 			
 			private function onCreationComplete(event:FlexEvent):void{
 				shoutButton.addEventListener( MouseEvent.CLICK, onShoutClick);
+				getIssuesButton.addEventListener( MouseEvent.CLICK, onGetIssues);
 			}
 			
 			public function shoutSent():void{
@@ -32,16 +28,28 @@
 				shoutButton.enabled = true;
 			}
 			
+			public function handleCheckinSuccess(event:CheckinEvent):void{
+				if(!shoutButton.enabled) shoutButton.enabled = true;
+			}
+			
 			private function onShoutClick(event:MouseEvent):void
 			{
-				var checkinEvent:CheckinEvent = new CheckinEvent( CheckinEvent.CHECKIN );
-				
-				checkinEvent.venueVO = _selectedVenue;
-				
-				checkinEvent.message = shoutText.text;
-				dispatchEvent( checkinEvent );
-				
-				shoutButton.enabled = false;
+				if(!_selectedVenue){
+					var navigationEvent:NavigationEvent = new NavigationEvent(NavigationEvent.CHANGE);
+					navigationEvent.section = Section.SEARCH;
+					dispatchEvent( navigationEvent );
+				}else{
+					var checkinEvent:CheckinEvent = new CheckinEvent( CheckinEvent.CHECKIN );
+					checkinEvent.venueVO = _selectedVenue;
+					checkinEvent.message = shoutText.text;
+					dispatchEvent( checkinEvent );
+					shoutButton.enabled = false;
+				}
+			}
+			
+			private function onGetIssues(event:MouseEvent):void{
+				var issueEvent:IssueEvent = new IssueEvent( IssueEvent.READ );
+				dispatchEvent( issueEvent );
 			}
 			
 			public function set selectedVenue(value:VenueVO):void{
@@ -88,7 +96,12 @@
 		<s:Label id="currentLocation" text="Set Current Location" />
 		
 		<!--styleName="greyButtonSkin"-->
-		<s:Button id="shoutButton" label="Shout" 
+		<s:Button id="shoutButton" label="{ resourceManager.getString('myResources', 'CHECKIN') }" 
+				  skinClass="com.foursquare.skins.shout.ShoutBarButtonSkin"
+				  color="0xffffff" fontWeight="bold" fontSize="12"
+				  width="100" height="22" right="0" />
+
+		<s:Button id="getIssuesButton" label="{ resourceManager.getString('myResources', 'GET_ISSUES') }" 
 				  skinClass="com.foursquare.skins.shout.ShoutBarButtonSkin"
 				  color="0xffffff" fontWeight="bold" fontSize="12"
 				  width="100" height="22" right="0" />
