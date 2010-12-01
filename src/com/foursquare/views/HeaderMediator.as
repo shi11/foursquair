@@ -7,7 +7,7 @@
 package com.foursquare.views
 {
 	import com.foursquare.events.CheckinEvent;
-	import com.foursquare.events.IssueEvent;
+	import com.seeclickfix.events.IssueEvent;
 	import com.foursquare.events.NavigationEvent;
 	import com.foursquare.events.UserEvent;
 	import com.foursquare.events.VenueEvent;

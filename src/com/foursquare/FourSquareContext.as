@@ -8,7 +8,7 @@ package com.foursquare
 {
 	import com.foursquare.controller.CheckinCommand;
 	import com.foursquare.controller.HistoryCommand;
-	import com.foursquare.controller.IssueCommand;
+	import com.seeclickfix.contoller.IssueCommand;
 	import com.foursquare.controller.LoginCommand;
 	import com.foursquare.controller.Logout;
 	import com.foursquare.controller.MyDetailsCommand;
@@ -17,7 +17,7 @@ package com.foursquare
 	import com.foursquare.controller.UserDetailsCommand;
 	import com.foursquare.events.CheckinEvent;
 	import com.foursquare.events.HistoryEvent;
-	import com.foursquare.events.IssueEvent;
+	import com.seeclickfix.events.IssueEvent;
 	import com.foursquare.events.LoginEvent;
 	import com.foursquare.events.SearchEvent;
 	import com.foursquare.events.StartupEvent;
@@ -26,8 +26,8 @@ package com.foursquare
 	import com.foursquare.services.FoursquareService;
 	import com.foursquare.services.IFoursquareService;
 	import com.foursquare.services.IGeoService;
-	import com.foursquare.services.ISeeClickFixService;
-	import com.foursquare.services.SeeClickFixService;
+	import com.seeclickfix.services.ISeeClickFixService;
+	import com.seeclickfix.services.SeeClickFixService;
 	import com.foursquare.views.FeedMediator;
 	import com.foursquare.views.HeaderMediator;
 	import com.foursquare.views.HistoryMediator;
@@ -87,6 +87,7 @@ package com.foursquare
 			commandMap.mapEvent( UserEvent.DETAILS_GOT, UserDetailsCommand, UserEvent );
 			
 			commandMap.mapEvent( IssueEvent.READ, IssueCommand, IssueEvent );
+			commandMap.mapEvent( IssueEvent.READ_RETURNED, IssueCommand, IssueEvent );
 			
 			
 			//map model
